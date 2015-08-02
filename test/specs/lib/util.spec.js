@@ -32,6 +32,17 @@ describe('util', function () {
       hmt.assert.equal(route.re.test('a/foobar/baraou/nath/'), false);
       hmt.assert.equal(route.re.test('/foobar/baraou/nath/th'), false);
     });
+
+    it('pattern with wildcard', function () {
+      var pattern = '/foobar/*';
+      var route = util.createPatternFromStr(pattern);
+
+      hmt.assert.equal(route.re.test('/foobar/snth'), true);
+      hmt.assert.equal(route.re.test('/foobar/baraou/nath'), true);
+      hmt.assert.equal(route.re.test('/foobar/baraou/nath/'), true);
+      hmt.assert.equal(route.re.test('a/foobar/baraou/nath/'), false);
+      hmt.assert.equal(route.re.test('/foobar/baraou/nath/th'), true);
+    });
   });
 
   describe('wantsJSON', function () {

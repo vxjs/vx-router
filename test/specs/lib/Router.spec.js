@@ -88,7 +88,7 @@ describe('Router', function () {
 
       var endMock = function (result) {
         try {
-          hmt.assert.deepEqual(result, { error: 'No matching route' });
+          hmt.assert.deepEqual(result, { error: 'No matching route for path /foo/thom/ano' });
           done();
         } catch (e) {
           done(e);
